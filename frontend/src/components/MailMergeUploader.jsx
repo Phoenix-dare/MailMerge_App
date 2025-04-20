@@ -62,7 +62,9 @@ export default function MailMergeUploader() {
     } catch (error) {
       console.error("Error during upload:", error);
       setStatus({
-        error: error.response?.data?.error || "Failed to upload or process files."
+        error: typeof error.response?.data === 'string' 
+          ? error.response.data 
+          : error.response?.data?.error || error.response?.data?.message || "Failed to upload or process files."
       });
     } finally {
       setIsLoading(false);
