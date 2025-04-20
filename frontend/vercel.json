@@ -2,10 +2,10 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://$BACKEND_URL/:path*"
+      "destination": "https://mailmerge-app.onrender.com/:path*"
     }
   ],
   "env": {
-    "VITE_API_URL": "https://$BACKEND_URL"
+    "VITE_API_URL": "https://mailmerge-app.onrender.com/"
   }
 }
