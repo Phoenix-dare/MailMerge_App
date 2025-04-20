@@ -109,7 +109,16 @@ async function parseExcel(filePath) {
     const values = row.values.slice(1);
     const record = {};
     headers.forEach((header, index) => {
-      record[header] = values[index];
+      // Convert Date objects to formatted strings
+      if (values[index] instanceof Date) {
+        record[header] = values[index].toLocaleDateString('en-US', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+      } else {
+        record[header] = values[index];
+      }
     });
     records.push(record);
   });
